@@ -381,12 +381,311 @@
 <body>
     <div class="deck-viewport">
         <main class="deck-stage" id="deckStage">
-            <!-- Slide 01 Placeholder (Scaffold) -->
-            <section class="slide theme-dark active visible" data-label="Title">
-                <div class="slide-body" style="justify-content: center; align-items: flex-start;">
-                    <h1 class="headline-stencil" style="font-size: 110px;">DP-ALS PRESENTATION</h1>
+            <!-- ===========================================
+                 SLIDE 01: COVER / TITLE
+                 =========================================== -->
+            <section class="slide theme-dark active visible" data-label="01 Cover">
+                <div class="topbar">
+                    <div class="topbar-left">
+                        <span style="color: var(--color-orange);">●</span>
+                        <span>IARE CSE RESEARCH SEMINAR</span>
+                    </div>
+                    <div class="topbar-right">
+                        <span>DUAL-PROCESS COGNITIVE ARCHITECTURE</span>
+                    </div>
+                </div>
+
+                <div class="slide-body" style="justify-content: center; gap: 24px;">
+                    <div class="reveal" style="display: flex; align-items: center; gap: 16px;">
+                        <span class="pill-status pill-orange" style="background: var(--color-orange); color: var(--color-black); font-size: 20px; padding: 6px 20px;">RESEARCH PAPER PRESENTATION</span>
+                        <span style="font-family: var(--font-chrome); font-size: 22px; font-weight: 700; letter-spacing: 0.12em; color: var(--color-bone); opacity: 0.85;">OCTOBER 2026</span>
+                    </div>
+
+                    <h1 class="headline-stencil reveal" style="font-size: 96px; line-height: 0.88; max-width: 1750px; color: var(--color-bone);">
+                        SHIFTING FROM ONE-TIME EDUCATION<br>
+                        TO <span style="color: var(--color-orange);">CONTINUOUS GROWTH</span>
+                    </h1>
+
+                    <p class="reveal" style="font-size: 26px; line-height: 1.35; max-width: 1550px; color: var(--color-bone); opacity: 0.9; font-weight: 400;">
+                        A Dual-Process Cognitive Architecture Integrating System One Decision Models and Generative Socratic Tutors for Adaptive Lifelong Learning
+                    </p>
+
+                    <!-- Cover Lockup -->
+                    <div class="reveal" style="display: flex; align-items: center; gap: 28px; margin-top: 28px; padding-top: 28px; border-top: 2px solid rgba(226, 220, 201, 0.2);">
+                        <div style="width: 64px; height: 64px; border-radius: 16px; background: var(--color-orange); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); font-size: 32px; font-weight: 700; color: var(--color-black);">
+                            DP
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 4px;">
+                            <div style="font-family: var(--font-chrome); font-size: 26px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-bone);">
+                                HARSHITH D. • AMAN GOUD D. • SURYA TEJA P. • RAMYA N.
+                            </div>
+                            <div style="font-family: var(--font-chrome); font-size: 20px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--color-bone); opacity: 0.75;">
+                                DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING • INSTITUTE OF AERONAUTICAL ENGINEERING, HYDERABAD
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-chrome">
+                    <span>DEPARTMENT OF CSE • IARE</span>
+                    <span>RESEARCH PAPER WALKTHROUGH</span>
                 </div>
             </section>
+
+            <!-- ===========================================
+                 SLIDE 02: THE STRUCTURAL CRISIS
+                 =========================================== -->
+            <section class="slide theme-bone" data-label="02 Motivation">
+                <div class="topbar">
+                    <div class="topbar-left">
+                        <span style="color: var(--color-orange);">01.</span>
+                        <span>MOTIVATION & PROBLEM STATEMENT</span>
+                    </div>
+                    <div class="topbar-right">
+                        <span>THE SKILL HALF-LIFE CRISIS</span>
+                    </div>
+                </div>
+
+                <div class="slide-body" style="gap: 24px;">
+                    <div>
+                        <h2 class="headline-stencil reveal" style="font-size: 68px; color: var(--color-ink);">
+                            ACCELERATED SKILL OBSOLESCENCE VS. STATIC SCHOOLING
+                        </h2>
+                        <p class="reveal" style="font-family: var(--font-chrome); font-size: 24px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-sienna); margin-top: 4px;">
+                            THE MODERN PARADOX: 40-YEAR PROFESSIONAL LIFESPANS POWERED BY EPISODIC, FRONT-LOADED CREDENTIALS
+                        </p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; flex: 1;">
+                        <!-- Tablet 1: Skill Half-Life -->
+                        <div class="tablet reveal" style="background: var(--color-sienna); color: var(--color-ink);">
+                            <div class="num-stat" style="color: var(--color-bone);">
+                                2.5<span class="stat-suffix" style="color: var(--color-bone);">YRS</span>
+                            </div>
+                            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+                                <h3 class="headline-stencil" style="font-size: 32px; color: var(--color-bone);">
+                                    RAPID SKILL DECAY
+                                </h3>
+                                <p style="font-size: 20px; line-height: 1.4; color: var(--color-paper);">
+                                    Non-linear technological acceleration has shrunk the half-life of learned skills to 5 years overall, and under <strong>2.5 years in software engineering and data analytics</strong>.
+                                </p>
+                                <span class="pill-status pill-paper" style="align-self: flex-start; margin-top: 6px;">
+                                    SDG 8 • DECENT WORK
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Tablet 2: Episodic Front-Loading -->
+                        <div class="tablet reveal" style="background: var(--color-orange); color: var(--color-ink);">
+                            <div class="num-stat" style="color: var(--color-ink);">
+                                40<span class="stat-suffix" style="color: var(--color-ink);">YRS</span>
+                            </div>
+                            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+                                <h3 class="headline-stencil" style="font-size: 32px; color: var(--color-ink);">
+                                    FRONT-LOADED MODEL
+                                </h3>
+                                <p style="font-size: 20px; line-height: 1.4; color: var(--color-ink);">
+                                    Higher education remains front-loaded between ages 18 and 25. Professionals navigate four decades of technical shifts with <strong>unsupported, episodic upskilling</strong>.
+                                </p>
+                                <span class="pill-status pill-bone" style="background: var(--color-bone); color: var(--color-ink); align-self: flex-start; margin-top: 6px;">
+                                    SDG 4 • LIFELONG LEARNING
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Tablet 3: Inequality & SDGs -->
+                        <div class="tablet reveal" style="background: var(--color-mustard); color: var(--color-ink);">
+                            <div class="num-stat" style="color: var(--color-ink);">
+                                04<span class="stat-suffix" style="color: var(--color-ink);">SDGS</span>
+                            </div>
+                            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+                                <h3 class="headline-stencil" style="font-size: 32px; color: var(--color-ink);">
+                                    SYSTEMIC DISLOCATION
+                                </h3>
+                                <p style="font-size: 20px; line-height: 1.4; color: var(--color-ink);">
+                                    Static curricula exacerbate workplace dislocation and educational inequity. Directly threatens <strong>UN Sustainable Development Goals 4, 8, 9, and 10</strong>.
+                                </p>
+                                <span class="pill-status pill-paper" style="align-self: flex-start; margin-top: 6px;">
+                                    SDG 9 & 10 • RESILIENCE
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-chrome">
+                    <span>DP-ALS RESEARCH PAPER • IARE</span>
+                    <span>SLIDE 02 / 14</span>
+                </div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 03: THE INTELLIGENT TUTORING DILEMMA
+                 =========================================== -->
+            <section class="slide theme-bone" data-label="03 Dilemma">
+                <div class="topbar">
+                    <div class="topbar-left">
+                        <span style="color: var(--color-orange);">02.</span>
+                        <span>THE STATE OF THE ART</span>
+                    </div>
+                    <div class="topbar-right">
+                        <span>INTELLIGENT TUTORING DILEMMA</span>
+                    </div>
+                </div>
+
+                <div class="slide-body" style="gap: 20px;">
+                    <div class="action-bar reveal">
+                        <span style="color: var(--color-orange); font-size: 28px;">⚡</span>
+                        <span>PEDAGOGICAL BOTTLENECK: DETERMINISTIC BRITTLENESS VS. GENERATIVE OVER-ASSISTANCE</span>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; flex: 1;">
+                        <!-- Left: Classical ITS -->
+                        <div class="tablet reveal" style="background: var(--color-teal); color: var(--color-bone);">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <span class="num-stat" style="font-size: 90px; color: var(--color-bone);">01</span>
+                                <span class="pill-status pill-paper" style="color: var(--color-ink);">CLASSICAL ITS PARADIGM</span>
+                            </div>
+                            <h3 class="headline-stencil" style="font-size: 34px; color: var(--color-bone); margin-top: 8px;">
+                                RULE-BASED, BKT & IRT SYSTEMS
+                            </h3>
+                            <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 14px; font-size: 20px; line-height: 1.42;">
+                                <div style="display: flex; gap: 12px;">
+                                    <span style="color: var(--color-orange); font-weight: 800;">✓</span>
+                                    <span><strong>Low Latency (&lt;50ms):</strong> Bayesian Knowledge Tracing (BKT) and Item Response Theory execute deterministically on client/edge.</span>
+                                </div>
+                                <div style="display: flex; gap: 12px;">
+                                    <span style="color: var(--color-magenta); font-weight: 800;">✗</span>
+                                    <span><strong>Brittle Pedagogical Heuristics:</strong> Incapable of understanding nuanced student prose or novel mental models.</span>
+                                </div>
+                                <div style="display: flex; gap: 12px;">
+                                    <span style="color: var(--color-magenta); font-weight: 800;">✗</span>
+                                    <span><strong>Zero Semantic Synthesis:</strong> Cannot formulate contextualized metaphors or personalized Socratic analogies for adult professionals.</span>
+                                </div>
+                            </div>
+                            <div style="margin-top: auto; padding-top: 16px; border-top: 1.5px solid rgba(226, 220, 201, 0.3);">
+                                <span class="pill-status pill-magenta">FAST BUT SEMANTICALLY BLIND</span>
+                            </div>
+                        </div>
+
+                        <!-- Right: Monolithic LLM -->
+                        <div class="tablet reveal" style="background: var(--color-magenta); color: var(--color-bone);">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <span class="num-stat" style="font-size: 90px; color: var(--color-bone);">02</span>
+                                <span class="pill-status pill-paper" style="color: var(--color-ink);">GENAI TUTOR PARADIGM</span>
+                            </div>
+                            <h3 class="headline-stencil" style="font-size: 34px; color: var(--color-bone); margin-top: 8px;">
+                                MONOLITHIC GENERATIVE LLMS
+                            </h3>
+                            <div style="margin-top: 16px; display: flex; flex-direction: column; gap: 14px; font-size: 20px; line-height: 1.42;">
+                                <div style="display: flex; gap: 12px;">
+                                    <span style="color: var(--color-orange); font-weight: 800;">✓</span>
+                                    <span><strong>Rich Reasoning & Socratic Dialogue:</strong> Multi-turn semantic explanations, cross-domain grounding, and contextual tutoring.</span>
+                                </div>
+                                <div style="display: flex; gap: 12px;">
+                                    <span style="color: var(--color-bone); font-weight: 800;">✗</span>
+                                    <span><strong>Prohibitive Latency & Token Burn:</strong> Median first-answer latency ranges from 0.42s to 700s; consumes ~48,200 tokens/hr.</span>
+                                </div>
+                                <div style="display: flex; gap: 12px;">
+                                    <span style="color: var(--color-bone); font-weight: 800;">✗</span>
+                                    <span><strong>Destroys Productive Struggle:</strong> Unguarded over-explanation terminates the learner's cognitive effort and shatters flow state.</span>
+                                </div>
+                            </div>
+                            <div style="margin-top: auto; padding-top: 16px; border-top: 1.5px solid rgba(226, 220, 201, 0.3);">
+                                <span class="pill-status pill-mustard">EXPRESSIVE BUT SLOW & EXPENSIVE</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-chrome">
+                    <span>DP-ALS RESEARCH PAPER • IARE</span>
+                    <span>SLIDE 03 / 14</span>
+                </div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 04: THEORETICAL FOUNDATION
+                 =========================================== -->
+            <section class="slide theme-dark" data-label="04 Dual-Process">
+                <div class="topbar">
+                    <div class="topbar-left">
+                        <span style="color: var(--color-orange);">03.</span>
+                        <span>THEORETICAL FOUNDATION</span>
+                    </div>
+                    <div class="topbar-right">
+                        <span>KAHNEMAN'S COGNITIVE DIVISION</span>
+                    </div>
+                </div>
+
+                <div class="slide-body" style="gap: 20px;">
+                    <div>
+                        <h2 class="headline-stencil reveal" style="font-size: 68px; color: var(--color-bone);">
+                            DUAL-PROCESS THEORY IN PEDAGOGICAL AI
+                        </h2>
+                        <p class="reveal" style="font-family: var(--font-chrome); font-size: 24px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-orange); margin-top: 4px;">
+                            HOW EXPERT HUMAN TEACHERS OPERATE: FAST INSTINCTIVE REFLEX + DELIBERATE ASYNCHRONOUS REASONING
+                        </p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; flex: 1;">
+                        <!-- System One Card -->
+                        <div class="tablet reveal" style="background: var(--color-orange); color: var(--color-ink);">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <span class="num-stat" style="font-size: 110px; color: var(--color-ink);">01</span>
+                                <span class="pill-status pill-paper">EDGE REFLEX ENGINE</span>
+                            </div>
+                            <h3 class="headline-stencil" style="font-size: 34px; color: var(--color-ink); margin-top: 8px;">
+                                SYSTEM ONE: AUTONOMOUS REFLEX
+                            </h3>
+                            <ul style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px; font-size: 20px; line-height: 1.4; list-style-position: inside;">
+                                <li><strong>Fast, Parallel & Reactive:</strong> Design target &lt;40 ms inference.</li>
+                                <li><strong>Monitors Micro-Telemetry:</strong> Keystroke intervals, cadence entropy, scroll jitter, dwell times.</li>
+                                <li><strong>Zero UI Disruption:</strong> Preserves immersion while learner is in productive struggle.</li>
+                                <li><strong>Action Set:</strong> Micro-nudges, syntax tips, IRT item calibration.</li>
+                            </ul>
+                            <div style="margin-top: auto; padding-top: 14px; border-top: 1.5px solid rgba(10,10,10,0.2);">
+                                <span style="font-family: var(--font-chrome); font-size: 20px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;">
+                                    HIGH-FREQUENCY EDGE INFERENCE (POMDP)
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- System Two Card -->
+                        <div class="tablet reveal" style="background: var(--color-teal); color: var(--color-bone);">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <span class="num-stat" style="font-size: 110px; color: var(--color-bone);">02</span>
+                                <span class="pill-status pill-paper" style="color: var(--color-ink);">SOCRATIC DELIBERATION</span>
+                            </div>
+                            <h3 class="headline-stencil" style="font-size: 34px; color: var(--color-bone); margin-top: 8px;">
+                                SYSTEM TWO: SOCRATIC REASONING
+                            </h3>
+                            <ul style="margin-top: 16px; display: flex; flex-direction: column; gap: 10px; font-size: 20px; line-height: 1.4; list-style-position: inside;">
+                                <li><strong>Slow, Serial & Deliberate:</strong> Transformer-based LLM.</li>
+                                <li><strong>Engaged Only Upon Impasse:</strong> Triggered when load exceeds threshold.</li>
+                                <li><strong>Preserves Learner Agency:</strong> Generates conceptual analogies; never dumps raw solution code.</li>
+                                <li><strong>Asynchronous RPC:</strong> Runs out-of-band to prevent UI locking.</li>
+                            </ul>
+                            <div style="margin-top: auto; padding-top: 14px; border-top: 1.5px solid rgba(226, 220, 201, 0.3);">
+                                <span style="font-family: var(--font-chrome); font-size: 20px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-bone);">
+                                    SELECTIVE SOCRATIC INTERVENTION (GENAI)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bottom Callout Quote -->
+                    <div class="reveal" style="background: rgba(226, 220, 201, 0.08); border-left: 6px solid var(--color-orange); border-radius: 12px; padding: 14px 24px; font-size: 20px; color: var(--color-bone);">
+                        <em>"An expert human tutor does not deliberate over complex pedagogy at every keystroke. Subtle cues trigger instinctive reflex; deep deliberation engages only upon cognitive impasse."</em>
+                    </div>
+                </div>
+
+                <div class="footer-chrome">
+                    <span>DP-ALS RESEARCH PAPER • IARE</span>
+                    <span>SLIDE 04 / 14</span>
+                </div>
+            </section>
+
         </main>
     </div>
 
