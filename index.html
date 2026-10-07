@@ -274,6 +274,47 @@
             text-transform: uppercase;
         }
 
+        .intro-instructions {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .intro-instructions-card {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            min-width: 620px;
+            padding: 32px 44px;
+            border: 1.5px solid rgba(226, 220, 201, 0.28);
+            border-radius: 22px;
+            background: rgba(226, 220, 201, 0.08);
+            color: var(--color-bone);
+            font-family: var(--font-chrome);
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-align: center;
+            box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
+        }
+
+        .intro-instructions-card kbd {
+            display: inline-block;
+            min-width: 48px;
+            padding: 4px 10px;
+            border: 1.5px solid var(--color-orange);
+            border-radius: 8px;
+            background: var(--color-orange);
+            color: var(--color-black);
+            font-family: var(--font-chrome);
+            font-size: 26px;
+            font-weight: 800;
+            line-height: 1;
+            box-shadow: inset 0 -3px 0 rgba(0, 0, 0, 0.18);
+        }
+
         .pill-status {
             display: inline-flex;
             align-items: center;
@@ -369,6 +410,12 @@
             border-color: var(--color-orange);
         }
 
+        .fullscreen-btn.is-hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
         .fullscreen-btn svg {
             width: 22px;
             height: 22px;
@@ -389,7 +436,14 @@
             <!-- ===========================================
                  SLIDE 00: EMPTY BLACK INTRO SLIDE
                  =========================================== -->
-            <section class="slide theme-dark active visible" data-label="00 Black" style="background: var(--color-black);"></section>
+            <section class="slide theme-dark active visible" data-label="00 Black" style="background: var(--color-black);">
+                <div class="intro-instructions">
+                    <div class="intro-instructions-card" aria-label="Presentation controls">
+                        <div>Press <kbd>F</kbd> to enter fullscreen</div>
+                        <div>Use Arrow Keys or <kbd>Space</kbd> to navigate</div>
+                    </div>
+                </div>
+            </section>
 
             <!-- ===========================================
                  SLIDE 01: COVER / TITLE
@@ -2012,6 +2066,11 @@
                     slide.classList.toggle('active', isActive);
                     slide.classList.toggle('visible', isActive);
                 });
+
+                const fullscreenButton = document.getElementById('fullscreenBtn');
+                if (fullscreenButton) {
+                    fullscreenButton.classList.toggle('is-hidden', this.currentSlide !== 0);
+                }
 
                 if (this.counter) {
                     const cur = String(this.currentSlide + 1).padStart(2, '0');
