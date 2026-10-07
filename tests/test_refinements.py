@@ -33,10 +33,12 @@ def test_user_refinements():
         assert footer is not None, f"Slide {i+1} missing footer-chrome"
         assert "• IARE" not in footer.text, f"Slide {i+1} still contains '• IARE' in footer: {footer.text}"
 
-    # Slide 1 top left has INSTITUTE OF AERONAUTICAL ENGINEERING
-    s1_topbar_left = slides[0].find("div", class_="topbar-left").text
-    assert "INSTITUTE OF AERONAUTICAL ENGINEERING" in s1_topbar_left
-    assert "IARE CSE RESEARCH SEMINAR" not in s1_topbar_left
+    # Slide 1 top left has logo image
+    s1_topbar_left = slides[0].find("div", class_="topbar-left")
+    s1_logo = s1_topbar_left.find("img")
+    assert s1_logo is not None, "Slide 1 topbar-left must contain the logo image"
+    assert s1_logo["src"] == "logo.png"
+    assert "IARE CSE RESEARCH SEMINAR" not in s1_topbar_left.text
 
     # 2. Slide 3: Bullet points wrapped in rounded shapes
     s3 = slides[2]
