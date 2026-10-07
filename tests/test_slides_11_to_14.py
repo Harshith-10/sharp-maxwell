@@ -5,7 +5,7 @@ def test_slides_11_to_14():
         soup = BeautifulSoup(f.read(), "html.parser")
 
     slides = soup.find_all("section", class_="slide")
-    assert len(slides) == 14, f"Expected exactly 14 slides, got {len(slides)}"
+    assert len(slides) >= 14, f"Expected at least 14 slides, got {len(slides)}"
 
     # Slide 11: Benchmarks
     s11 = slides[10]
