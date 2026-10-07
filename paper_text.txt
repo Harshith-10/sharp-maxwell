@@ -1,0 +1,597 @@
+Shifting from One-Time Education to Continuous
+Growth: A Dual-Process Cognitive Architecture
+Integrating System One Decision Models and
+Generative Socratic Tutors for Adaptive Lifelong
+Learning
+Harshith D. , Aman Goud D., Surya Teja P., and Ramya N.
+Department of Computer Science and Engineering
+Institute of Aeronautical Engineering, Hyderabad, India
+Email: {23951A052X, 23951A050K, 24955A0537, n.ramya}@iare.ac.in
+
+Abstract—Traditional higher and professional education follows an episodic, front-loaded paradigm in which foundational
+degrees are earned early in life with little continuous adaptation.
+In modern technological ecosystems this static model causes
+rapid skill obsolescence, workforce dislocation, and educational
+inequity. This paper presents the Dual-Process Adaptive Learning
+System (DP-ALS), a theoretical and cyber-physical architecture
+for continuous, lifelong education. Drawing on dual-process cognitive theory, DP-ALS separates educational intervention into two
+components: (i) a low-latency System One decision model (design
+target under 40 ms) that acts as a continuous reflex engine,
+monitoring learner micro-telemetry to track cognitive load, flow
+state, and productive struggle through a partially observable
+Markov decision process (POMDP); and (ii) a deliberate System
+Two generative AI tutor invoked asynchronously only when an
+impasse is detected or deep conceptual synthesis is required.
+We formalize the System One / System Two coordination loop
+and report, in agent-based simulation, an 84.6% reduction in
+LLM token consumption relative to a monolithic LLM tutor, an
+85.3% reduction in cognitive impasse, and a 61.6% reduction in
+time-to-mastery relative to a static curriculum. The framework
+is mapped to UN Sustainable Development Goals 4, 8, 9, and
+10 and to Washington Accord knowledge profiles and program
+outcomes.
+Index Terms—adaptive learning systems, System One decision
+models, generative AI, dual-process theory, intelligent tutoring
+systems, lifelong education, POMDP
+
+I. I NTRODUCTION
+Modern economic, industrial, and social systems are shaped
+by non-linear technological acceleration, and the half-life of
+a learned skill is now commonly put at about five years,
+falling to as little as 2.5 years in fast-moving sectors such
+as IT and data analysis [1]. Yet education remains episodic
+and front-loaded: individuals undergo intensive credentialing
+between roughly ages 18 and 25, followed by ad hoc, fragmented professional upskilling. This mismatch undermines
+the United Nations Sustainable Development Goals (SDGs)
+[2], [3], notably SDG 4 (Quality Education and Lifelong
+Learning), SDG 8 (Decent Work and Economic Growth),
+
+SDG 9 (Industry, Innovation, and Infrastructure), and SDG 10
+(Reduced Inequalities).
+Intelligent tutoring systems (ITS) have sought to bridge this
+gap [4], but existing approaches face a dichotomy:
+1) Classical ITS (rule-based, BKT, IRT). Systems built
+on Bayesian knowledge tracing (BKT) [5] and item
+response theory (IRT) execute deterministically and with
+low latency, but rely on brittle pedagogical heuristics,
+perform no semantic synthesis, and cannot generate
+contextual metaphors for diverse adult learners.
+2) Monolithic generative LLM tutors. Transformer-based
+[6] large language models (LLMs) support rich Socratic
+dialogue, but they respond slowly (across 147 models
+in one cross-provider feed, median first-answer latency
+ranges from 0.42 s to over 700 s, and frontier reasoning
+models typically take tens of seconds or more [7]),
+incur prohibitive token costs, and tend to over-assist.
+Unguarded use of a generative tutor can reduce later unaided performance [8], and premature over-explanation
+ends the learner’s “productive struggle” and disrupts the
+state of cognitive flow [9].
+To resolve this dichotomy we propose a Dual-Process Adaptive Learning System (DP-ALS). Following the human dualprocess architecture [10], it couples a fast, reflexive System
+One decision model with an asynchronous, deliberate System Two generative Socratic engine. This paper presents the
+theoretical foundation, the POMDP formulation, the system
+architecture, a simulation-based evaluation, and the alignment
+with accreditation frameworks.
+II. T HEORETICAL F OUNDATION
+A. Dual-Process Theory in Pedagogy
+Kahneman’s framework posits two modes of cognition [10]:
+•
+
+System One (autonomous reflex): fast, parallel, computationally light, non-conscious, and reactive.
+
+System Two (deliberate reasoning): slow, serial, computationally intensive, analytical, and rule-governed.
+An expert human tutor does not deliberate over complex
+pedagogy at every keystroke. Rather, the tutor’s System One
+registers subtle cues, such as a furrowed brow, a sudden
+hesitation, typing jitter, or a steady rhythm, and System Two
+engages only when an impasse is sensed. DP-ALS reproduces
+this division of labor computationally.
+•
+
+B. The System One Reflex Engine
+The System One component is a low-latency decision
+head. Rather than relying on hosted, high-latency generative APIs, we model it on an edge-deployable, open-weight
+structured-decision encoder, specifically Fastino’s 340Mparameter GLiNER2.5-Decide [11]. That model takes text
+and a schema of typed questions and returns, in a single
+encoder pass and without autoregressive decoding, a selected
+answer with probabilities and confidence scores. In DP-ALS
+the telemetry state is serialized into the text input (alternatively,
+the model can be fine-tuned on telemetry-derived states), and
+the typed question asks which pedagogical action to take.
+System One thus acts as a high-frequency classifier and action
+router (Fig. 1),
+πSystem One : Ht × xt −→ A,
+
+(1)
+
+where xt is the real-time client telemetry vector, Ht is
+a compact summary of the learner’s cognitive history, and
+A = {a0 , a1 , a2 , a3 , a4 } is a set of discrete, low-latency
+pedagogical interventions. The design target is System One
+inference in under 40 ms, so that interventions can synchronize
+with the learner’s motor-cognitive actions. Fastino reports
+median end-to-end latencies, at batch size 1 and 64 tokens,
+of 38.3 ms on a V100 GPU, 43–47 ms on T4, L4, and
+A100 GPUs, and 167.3 ms on a 48-vCPU server CPU [11].
+The target therefore presumes a server-class GPU close to
+the learner, and the latency figures in this paper come from
+simulation.
+III. M ATHEMATICAL F ORMULATION
+A. Telemetry State Space
+Let the learner interaction stream at time step t be a multimodal feature vector xt ∈ Rd :
+[︁
+]︁T
+xt = ∆τk , Hk , σscroll , esyntax , tdwell , rchurn ,
+(2)
+where ∆τk is inter-keystroke latency, Hk is the Shannon
+entropy of input-interval cadence, σscroll is viewport jitter,
+esyntax is the count of immediate compilation or validation
+errors, tdwell is static dwell duration, and rchurn is the rapidretry frequency.
+The latent cognitive state st ∈ S is a four-dimensional
+vector,
+⎡
+⎤
+Ct
+⎢ Ft ⎥
+3
+⎥
+st = ⎢
+(3)
+⎣Mt ⎦ ∈ [0, 1] × [−1, 1],
+Pt
+
+whose components are cognitive load Ct , flow-state probability
+Ft , competency mastery belief Mt , and productive struggle
+index Pt .
+B. POMDP Cognitive State Filtering
+Because st is not directly observable, the problem is a
+partially observable Markov decision process [12], and the
+System One engine maintains a belief distribution b(st ) updated by recursive Bayesian filtering, where P (xt | st ) is the
+observation model and T is the transition model:
+∫︂
+b(st ) ∝ P (xt | st ) T (st | st−1 , at−1 ) b(st−1 ) dst−1 . (4)
+S
+
+The productive struggle index follows Cognitive Load Theory
+[13]:
+(︁
+)︁
+Pt = tanh ω1 Mt − ω2 (Ct − C ∗ ) ,
+(5)
+where ω1 , ω2 > 0 are weights and C ∗ ≈ 0.65 is the optimal
+zone of proximal cognitive challenge. If Pt > 0 the learner is
+in productive difficulty; if Pt ≪ 0 the struggle has degenerated
+into frustrating impasse.
+C. Action Space and Policy Optimization
+The System One policy selects one of five mutually exclusive actions:
+• a0 (passive flow): no UI interruption; preserve immersion.
+• a1 (ambient nudge): a subtle syntax or typographic highlight (visual cue under 15 ms).
+• a2 (IRT complexity shift): adjust item difficulty β under
+a dynamic IRT model,
+P (Y = 1 | θt , β) =
+
+1
+,
+1 + e−Dκ(θt −β)
+
+(6)
+
+where θt is learner ability, κ is item discrimination, and
+D is a scaling constant.
+• a3 (dispatch System Two): send an enriched diagnostic
+packet to the Socratic LLM.
+• a4 (cognitive rest): insert a micro-pause or spacedrepetition retrieval exercise.
+The policy maximizes expected cumulative discounted pedagogical return while penalizing compute cost and flow disruption:
+T
+[︂∑︂
+(︁
+J(πSystem One ) = E
+γ t ∆Mt + α1 Ft
+t=0
+
+)︁]︂
+− λ 1{at =a3 } Φcost − α2 Dt ,
+(7)
+where γ ∈ (0, 1) is the discount factor, α1 , α2 , λ ≥ 0 are tradeoff weights, Φcost is the relative compute cost of a System Two
+invocation, and Dt is the penalty for unnecessary interruption
+during flow.
+IV. S YSTEM A RCHITECTURE
+The platform has five cooperating components.
+
+telemetry
+(50 ms stream)
+micro-nudge
+(fast reflex)
+
+Learner interface
+and client telemetry
+keystroke entropy
+response latency
+scroll and UI jitter
+
+System One: Reflex engine
+(GLiNER2.5-Decide
+edge model)
+latency target under 40 ms
+cognitive load tracking
+POMDP routing, micronudges, IRT pacing
+
+skill updates
+
+Lifelong knowledge graph
+and Skill Passport
+dynamic competencies
+micro-credentials
+SDG, WK, and PO mastery
+
+impasse detected:
+dispatch System Two
+
+Socratic guidance
+(async stream)
+
+System Two: Socratic GenAI
+(deliberate LLM engine)
+Socratic dialogue
+conceptual remediation
+personalized analogies
+
+assessment
+
+Fig. 1. Dual-process architecture. Telemetry flows into the fast System One decision engine (latency target under 40 ms) for micro-scaffolding, which routes
+to the System Two LLM only upon cognitive impasse. Both systems update the learner’s lifelong skill record.
+
+A. Edge Telemetry Pipeline
+
+Algorithm 1 Dual-Process Cognitive Loop (DP-ALS)
+
+A lightweight JavaScript worker samples browser interaction signals every 50 ms. To comply with privacy regulations
+(GDPR/FERPA), keystroke contents are never captured. Only
+statistical entropy, timing offsets ∆τ , and cursor accelerations
+are computed client-side and sent as anonymous tensor embeddings.
+
+Require: telemetry stream xt ; thresholds τflow , τP , τimpasse ,
+τfatigue ; tolerance δ; target success probability p∗ ; System Two
+cooldown Tcool
+Ensure: action at ∈ A and belief b(st ) at every step
+1: b(s0 ) ← prior; pending ← false; tlast ← −∞
+2: while session active, every ∆t = 50 ms do
+3:
+Receive xt {Eq.
+(︁ (2)}
+)︁
+4:
+b(st ) ← filter b(st−1 ), at−1 , xt {Eq. (4)}
+5:
+(Ct , Ft , Mt , Pt ) ← Eb(st ) [st ] {Eqs. (3), (5)}
+6:
+if Ct ≥ τimpasse or Pt < τP then
+7:
+if not pending and t − tlast ≥ Tcool then
+8:
+at ← a3 ; Γ ← ⟨b(st ), ErrorTrace, SkillGraph⟩
+9:
+Send Γ to System Two asynchronously; pending ←
+true; tlast ← t
+10:
+else
+11:
+at ← a0 {System Two reply pending; do not interrupt}
+12:
+end if
+13:
+else if ∆τk > τfatigue then
+14:
+at ← a4 {cognitive rest}
+15:
+else if Ft ≥ τflow and Pt ≥ 0 then
+16:
+at ← a0 {passive flow}
+17:
+else if esyntax > 0 then
+18:
+at ← a1 {ambient nudge}
+19:
+else if Pt < 0 or Ct < C ∗ −∗ δ /︁then
+p
+20:
+at ← a2 ; β ← θ̂t − ln 1−p
+∗ (Dκ) {Eq. (6)}
+21:
+else
+22:
+at ← a 0
+23:
+end if
+24: end while
+25: on System Two reply: stream the Socratic dialogue to the client
+sidebar; pending ← false
+
+B. System One Reflex Gateway
+Telemetry vectors stream over binary WebSockets to an
+edge-deployed System One inference server running an openweight decision model of the GLiNER2.5-Decide class. The
+simulated end-to-end round-trip latency is 28.4 ± 4.2 ms,
+which assumes optimization beyond the published single-GPU
+latency of 38.3 ms [11]. At each step the gateway evaluates
+the POMDP state and issues micro-nudges or adjusts client
+UI state without server-side rendering delays.
+C. System Two Socratic Deliberation Engine
+When System One fires a3 , an asynchronous RPC payload
+is built from (a) the learner’s demographic and professional
+background, (b) the targeted knowledge-graph node, (c) the
+empirical error trace, and (d) the diagnosed misconception signature. The System Two LLM then generates targeted, personalized Socratic questions, for example relating a distributedconsensus algorithm to a supply-chain manager’s inventorybalancing experience.
+D. Lifelong Competency Graph and Skill Passport
+Continuous growth is recorded in an immutable, graphbased Skill Passport. Mastery is re-evaluated through spaceddecay functions, which encourages micro-credentials and ongoing upskilling.
+E. Algorithmic Coordination
+Client telemetry, System One reflex decisions, and System
+Two deliberation are coordinated by the procedure in Algorithm 1. Fig. 1 shows the resulting data flow.
+
+Rules are evaluated in priority order, so each step selects
+exactly one action. An impasse takes precedence over flow
+protection, because a high load Ct can coexist with a nonnegative Pt when mastery belief is high. The pending flag
+and the cooldown Tcool prevent a new System Two request
+from being issued at every 50 ms tick while a reply is in
+flight. For action a2 , solving Eq. (6) for β at P (Y =1) = p∗
+sets the next item so that the predicted success probability
+
+TABLE I
+B ENCHMARK C OMPARISON ACROSS 10,000 S IMULATED L EARNER
+T RAJECTORIES
+Architecture
+
+TTM (h) Impasse (%) Tokens/h Flow (%)
+
+Static curriculum
+Rule-based ITS
+LLM-only (System Two)
+DP-ALS (ours)
+
+48.5
+39.2
+28.4
+18.6
+
+42.1
+31.8
+19.5
+6.2
+
+0
+120
+48,200
+7,400
+
+31.4
+44.6
+52.1
+78.9
+
+equals the target, where θ̂t is the current ability estimate. The
+thresholds τflow = 0.70, τP = −0.4, and τimpasse = 0.75
+match the values used in Fig. 2 and Appendix B. Because
+Pt > 0 whenever Ct < C ∗ in Eq. (5), a System Two dispatch
+can only occur at elevated load, as in Fig. 2.
+V. E MPIRICAL E VALUATION
+A. Experimental Configuration
+We ran an agent-based Monte Carlo simulation of N =
+10,000 learners in four equal cohorts of 2,500: (A) university engineering undergraduates, (B) mid-career technical
+reskillers, (C) non-technical upskillers, and (D) senior lifelong
+learners. Four architectures were benchmarked on a standard
+50-module STEM curriculum: (1) a static curriculum, (2) a
+rule-based ITS, (3) a monolithic LLM tutor (System Two
+only), and (4) the proposed DP-ALS. All latency, token, and
+learning-outcome figures in this paper are simulation outputs,
+not measurements from a deployed system.
+B. Results and Comparative Analysis
+Fig. 2 shows an illustrative simulated session in which System One issues micro-nudges and System Two is dispatched
+once, and Table I and Fig. 3 summarize the aggregate results.
+• Time-to-mastery (TTM). DP-ALS reached mastery in
+18.6 h on average, versus 28.4 h for the monolithic LLM
+and 48.5 h for the static curriculum (a 61.6% reduction).
+Instant micro-nudges keep minor conceptual slips from
+compounding into multi-minute halts.
+• Cognitive impasse. Impasse rates fell to 6.2%, compared
+with 42.1% for the static curriculum (an 85.3% reduction)
+and 19.5% for the monolithic LLM. We attribute the latter
+to latency: a multi-second wait for each LLM response
+degrades attention.
+• Token and energy efficiency. By delegating 91.3% of
+routine pedagogical decisions to the fast System One
+model, token consumption fell from 48,200 to 7,400
+tokens per hour, an 84.6% reduction in computational
+cost that supports green-computing goals.
+• Flow preservation. Sustained flow reached 78.9%, because System One avoids intrusive interruptions while
+the learner is in productive struggle.
+VI. A LIGNMENT WITH SDG S , K NOWLEDGE P ROFILES ,
+AND P ROGRAM O UTCOMES
+DP-ALS is mapped to the UN SDGs, to the Washington
+Accord knowledge profiles WK1–WK9, and to the program
+
+outcomes of the IEA graduate attributes (version 4, 2021)
+[14], whose eleven attributes WA1–WA11 are referred to
+here as PO1–PO11. The full mapping is given in Table II.
+In brief, the state-space filtering and IRT modeling address
+WK2 and PO1/PO2; the System One / System Two architecture addresses WK3, WK5 and PO3; the decision, LLM,
+and streaming tooling addresses WK6 and PO5; the Monte
+Carlo study addresses PO4; the 84.6% token reduction and
+SDG alignment address WK5, WK7 and PO6; client-side privacy safeguards address WK9 and PO7; the compute-versuspedagogy objective addresses PO10; and the Skill Passport
+addresses PO11.
+VII. C ONCLUSION AND F UTURE W ORK
+This paper presented a theoretical framework and cyberphysical realization for continuous education that moves pedagogical systems from episodic instruction to continuous, lifelong adaptation. By pairing a low-latency System One decision
+model with a deliberate System Two Socratic LLM, DPALS balances responsiveness, deep personalization, and computational sustainability. Future work will address on-device
+neuromorphic System One deployment, federated privacypreserving telemetry aggregation across enterprise consortia,
+a fairness audit of adaptive pacing across learner cohorts, and
+empirical trials within accredited degree programs.
+A PPENDIX A
+T ELEMETRY S ERIALIZATION S CHEMA
+The client worker transmits binary WebSocket frames of the
+form
+Frame = ⟨timestampuint64 , ∆τk,float32 , Hk,float32 ,
+σscroll,float32 , esyntax,uint8 , tdwell,float32 , rchurn,uint8 ⟩.
+The fields total 26 bytes, padded to 28 bytes per message. At
+one message per 50 ms this is 0.56 KB/s, enabling high-fidelity
+telemetry over constrained mobile links (SDG 9, PO5).
+A PPENDIX B
+S YSTEM T WO S OCRATIC C ONTEXT I NJECTION T EMPLATE
+When an impasse is flagged (Pt < −0.4), the prompt
+compiler builds structured context for the generative reasoning
+agent:
+[SYSTEM CONTEXT: DUAL-PROCESS PEDAGOGICAL
+AGENT]
+Learner Profile: Mid-Career Professional
+(Age 42)
+Target Competency: Graph Algorithms
+(Dijkstra, WK3/PO1)
+State: C_t = 0.82 (High), Flow = 0.12,
+Struggle = -0.65
+Diagnostic: 3 failed attempts on relaxation
+step in 45 s.
+DIRECTIVE: Do NOT provide solution code.
+Formulate a 2-sentence Socratic question
+grounding node relaxation in logistics
+routing. Preserve learner agency.
+
+Fig. 2. Illustrative simulated session. System One tracks cognitive load Ct and flow Ft and deploys micro-nudges while load is below τimpasse ; System
+Two is dispatched once, when the threshold is first breached.
+
+Fig. 3. Quantitative benchmarks. DP-ALS reduces time-to-mastery by 61.6% versus the static curriculum, cuts impasse to 6.2%, and reduces token consumption
+by 84.6% versus the monolithic LLM.
+
+R EFERENCES
+[1] Gallagher, “The half-life of a skill: Training the workforce for
+an era of digital transformation,” Arthur J. Gallagher & Co.,
+Oct. 2025. [Online]. Available: https://www.ajg.com/news-and-insights/
+features/half-life-of-a-skill-digital-transformation/
+[2] United Nations General Assembly, “Transforming our world: The 2030
+Agenda for Sustainable Development,” Resolution A/RES/70/1, Sep.
+2015.
+[3] UNESCO Institute for Lifelong Learning, Making Lifelong Learning a
+Reality: A Handbook. Hamburg, Germany: UNESCO UIL, 2022.
+[4] K. VanLehn, “The behavior of tutoring systems,” Int. J. Artif. Intell.
+Educ., vol. 16, no. 3, pp. 227–265, 2006.
+[5] A. T. Corbett and J. R. Anderson, “Knowledge tracing: Modeling
+the acquisition of procedural knowledge,” User Model. User-Adapted
+Interact., vol. 4, no. 4, pp. 253–278, 1994.
+[6] A. Vaswani et al., “Attention is all you need,” in Proc. Adv. Neural Inf.
+Process. Syst., vol. 30, 2017, pp. 5998–6008.
+[7] BenchLM, “Fastest LLMs by output and first answer,” Oct. 2026
+(runtime data from Artificial Analysis, verified Oct. 6, 2026). [Online].
+Available: https://benchlm.ai/llm-speed
+[8] H. Bastani, O. Bastani, A. Sungu, H. Ge, Ö. Kabakçı, and R. Mariman,
+“Generative AI without guardrails can harm learning: Evidence from
+high school mathematics,” Proc. Natl. Acad. Sci. U.S.A., vol. 122, no.
+26, p. e2422633122, 2025, doi: 10.1073/pnas.2422633122.
+[9] M. Csikszentmihalyi, Flow: The Psychology of Optimal Experience.
+New York, NY, USA: Harper & Row, 1990.
+[10] D. Kahneman, Thinking, Fast and Slow. New York, NY, USA: Farrar,
+Straus and Giroux, 2011.
+
+[11] Fastino Labs, “GLiNER2.5-Decide: An open-weight model for structured decision making,” Fastino blog, Sep. 24, 2026. [Online]. Available:
+https://fastino.ai/blog/gliner-2-5-decide-open-weight-decision-model
+[12] L. P. Kaelbling, M. L. Littman, and A. R. Cassandra, “Planning and
+acting in partially observable stochastic domains,” Artif. Intell., vol. 101,
+no. 1–2, pp. 99–134, 1998.
+[13] J. Sweller, “Cognitive load during problem solving: Effects on learning,”
+Cogn. Sci., vol. 12, no. 2, pp. 257–285, 1988.
+[14] International Engineering Alliance, “Graduate attributes and professional
+competence profiles,” Version 4, Jun. 21, 2021.
+
+TABLE II
+ACCREDITATION AND S TANDARDS A LIGNMENT OF DP-ALS (POn = IEA GRADUATE ATTRIBUTE WAn [14])
+
+Framework
+UN SDGs
+
+ID
+
+Descriptor
+
+Realization in DP-ALS
+
+SDG 4
+
+Quality and inclusive lifelong
+education
+Decent work and economic
+growth
+Industry, innovation, and
+infrastructure
+Reduced inequalities
+
+Adaptive scaffolding accessible to all age groups; continuous skill acquisition.
+
+SDG 8
+SDG 9
+SDG 10
+WK2
+
+WKs
+
+WK3
+WK5
+WK6
+WK7
+WK9
+PO1, PO2
+PO3
+
+POs
+
+PO4
+PO5
+PO6
+PO7
+PO8
+PO10
+PO11
+
+Mathematics, data analysis,
+and statistics
+Engineering fundamentals
+Engineering design
+knowledge, including efficient
+resource use
+Engineering practice
+(technology)
+Role of engineering in society;
+sustainable development
+Ethics, inclusive behavior and
+conduct
+Engineering knowledge;
+problem analysis
+Design and development of
+solutions
+Investigation
+Tool usage
+The engineer and the world
+Ethics
+Individual and collaborative
+teamwork
+Project management and
+finance
+Lifelong learning
+
+Reskilling and upskilling modules aligned with evolving industrial demands.
+AI educational infrastructure that optimizes compute sustainability.
+Low-bandwidth telemetry (0.56 KB/s) for constrained mobile links; personalized pacing across age cohorts.
+POMDP Bayesian filtering, IRT, and information-theoretic telemetry modeling.
+Low-latency client-server architecture, WebSockets, asynchronous pipelines.
+Integration of fast reflex AI, generative reasoning, and knowledge graphs;
+84.6% lower LLM token consumption.
+Edge inference, LLM orchestration, and binary streaming pipelines.
+Societal upskilling aligned with SDGs 4, 8, 9, and 10 at a lower compute
+footprint.
+Client-side privacy-preserving telemetry; adaptive pacing, with a fairness audit
+left to future work.
+Formal cognitive-state estimation and impasse detection from first principles.
+System One / System Two architecture designed around token cost, latency,
+and privacy constraints.
+Agent-based Monte Carlo study of 10,000 learners with analysis of the results.
+Decision models, LLM orchestration, and modeling tools, with the limits of
+simulation stated.
+Sustainable-development impacts: SDG alignment and reduced compute.
+GDPR/FERPA-aware design; no keystroke content captured.
+Modular microservices enabling multidisciplinary, distributed development.
+Objective that trades pedagogical return against compute cost.
+Lifelong competency tracking and micro-credential verification.
+
+
