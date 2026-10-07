@@ -686,6 +686,420 @@
                 </div>
             </section>
 
+            <!-- ===========================================
+                 SLIDE 05: SYSTEM ONE REFLEX ENGINE
+                 =========================================== -->
+            <section class="slide theme-bone" data-label="05 System One">
+                <div class="topbar">
+                    <div class="topbar-left">
+                        <span style="color: var(--color-orange);">04.</span>
+                        <span>SYSTEM ONE REFLEX ENGINE</span>
+                    </div>
+                    <div class="topbar-right">
+                        <span>LOW-LATENCY STRUCTURED DECISIONS</span>
+                    </div>
+                </div>
+
+                <div class="slide-body" style="gap: 20px;">
+                    <div>
+                        <h2 class="headline-stencil reveal" style="font-size: 68px; color: var(--color-ink);">
+                            THE SYSTEM ONE REFLEX ENGINE
+                        </h2>
+                        <p class="reveal" style="font-family: var(--font-chrome); font-size: 24px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-teal); margin-top: 4px;">
+                            EDGE-DEPLOYABLE OPEN-WEIGHT ENCODER FOR SUB-40 MS PEDAGOGICAL DECISIONS
+                        </p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; flex: 1;">
+                        <!-- Tablet 1: Model Selection -->
+                        <div class="tablet reveal" style="background: var(--color-teal); color: var(--color-bone);">
+                            <div class="num-stat" style="color: var(--color-bone);">
+                                340<span class="stat-suffix" style="color: var(--color-bone);">M</span>
+                            </div>
+                            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+                                <h3 class="headline-stencil" style="font-size: 30px; color: var(--color-bone);">
+                                    GLINER2.5-DECIDE
+                                </h3>
+                                <p style="font-size: 19px; line-height: 1.42; color: var(--color-paper);">
+                                    Built on Fastino's 340M-parameter open-weight structured-decision encoder. Takes serialized client telemetry text and a typed question schema.
+                                </p>
+                                <p style="font-size: 19px; line-height: 1.42; color: var(--color-paper);">
+                                    <strong>Single encoder forward pass</strong> without autoregressive decoding, yielding selected action probabilities and confidence scores.
+                                </p>
+                                <span class="pill-status pill-paper" style="color: var(--color-ink); align-self: flex-start; margin-top: 4px;">
+                                    NON-AUTOREGRESSIVE
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Tablet 2: Latency Profile -->
+                        <div class="tablet reveal" style="background: var(--color-blue); color: var(--color-bone);">
+                            <div class="num-stat" style="color: var(--color-bone);">
+                                &lt;40<span class="stat-suffix" style="color: var(--color-bone);">MS</span>
+                            </div>
+                            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+                                <h3 class="headline-stencil" style="font-size: 30px; color: var(--color-bone);">
+                                    EDGE LATENCY PROFILE
+                                </h3>
+                                <div style="font-size: 18px; line-height: 1.4; color: var(--color-bone);">
+                                    <div>• <strong>V100 GPU:</strong> 38.3 ms (batch 1, 64 tokens)</div>
+                                    <div>• <strong>T4 / L4 / A100:</strong> 43–47 ms</div>
+                                    <div>• <strong>48-vCPU CPU:</strong> 167.3 ms</div>
+                                    <div>• <strong>Simulated Edge Round-Trip:</strong> <span style="color: var(--color-orange); font-weight: 700;">28.4 ± 4.2 ms</span></div>
+                                </div>
+                                <p style="font-size: 18px; line-height: 1.4; color: var(--color-paper);">
+                                    Fast enough to synchronize with the learner's natural motor-cognitive keystroke actions.
+                                </p>
+                                <span class="pill-status pill-mustard" style="align-self: flex-start; margin-top: 4px;">
+                                    SYNCHRONOUS REFLEX
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Tablet 3: Policy Mapping -->
+                        <div class="tablet reveal" style="background: var(--color-mustard); color: var(--color-ink);">
+                            <div class="num-stat" style="color: var(--color-ink);">
+                                π<span class="stat-suffix" style="color: var(--color-ink);">(x)</span>
+                            </div>
+                            <div style="margin-top: auto; display: flex; flex-direction: column; gap: 10px;">
+                                <h3 class="headline-stencil" style="font-size: 30px; color: var(--color-ink);">
+                                    FORMAL ACTION ROUTER
+                                </h3>
+                                <div style="font-size: 20px; font-weight: 700; font-family: var(--font-chrome); letter-spacing: 0.05em; background: rgba(10,10,10,0.08); padding: 8px 14px; border-radius: 8px;">
+                                    $$\pi_{\text{System One}} : \mathcal{H}_t \times x_t \longrightarrow \mathcal{A}$$
+                                </div>
+                                <p style="font-size: 19px; line-height: 1.42; color: var(--color-ink);">
+                                    Maps current interaction vector $x_t$ and compact cognitive history $\mathcal{H}_t$ to discrete interventions $\mathcal{A} = \{a_0, a_1, a_2, a_3, a_4\}$.
+                                </p>
+                                <span class="pill-status pill-paper" style="align-self: flex-start; margin-top: 4px;">
+                                    HIGH-FREQUENCY ROUTER
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-chrome">
+                    <span>DP-ALS RESEARCH PAPER • IARE</span>
+                    <span>SLIDE 05 / 14</span>
+                </div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 06: MATHEMATICAL FORMULATION
+                 =========================================== -->
+            <section class="slide theme-bone" data-label="06 POMDP Math">
+                <div class="topbar">
+                    <div class="topbar-left">
+                        <span style="color: var(--color-orange);">05.</span>
+                        <span>MATHEMATICAL FORMULATION</span>
+                    </div>
+                    <div class="topbar-right">
+                        <span>POMDP & BAYESIAN FILTERING</span>
+                    </div>
+                </div>
+
+                <div class="slide-body" style="gap: 20px;">
+                    <div>
+                        <h2 class="headline-stencil reveal" style="font-size: 68px; color: var(--color-ink);">
+                            POMDP COGNITIVE STATE FILTERING
+                        </h2>
+                        <p class="reveal" style="font-family: var(--font-chrome); font-size: 24px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-sienna); margin-top: 4px;">
+                            FORMAL RECURSIVE ESTIMATION OF LATENT COGNITIVE LOAD, FLOW STATE, AND STRUGGLE
+                        </p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 28px; flex: 1;">
+                        <!-- Panel 1: State Space -->
+                        <div class="card-color reveal" style="background: var(--color-paper); border: 2px solid rgba(10,10,10,0.15); justify-content: space-between;">
+                            <div>
+                                <span class="pill-status pill-paper" style="margin-bottom: 8px;">OBSERVATION & STATE SPACE</span>
+                                <h3 class="headline-stencil" style="font-size: 30px; color: var(--color-ink);">
+                                    MULTIMODAL TELEMETRY VECTOR
+                                </h3>
+                                <div style="margin: 16px 0; background: #ffffff; padding: 14px 20px; border-radius: 12px; border: 1.5px solid rgba(10,10,10,0.1); font-size: 22px;">
+                                    $$x_t = [\Delta\tau_k,\, H_k,\, \sigma_{\text{scroll}},\, e_{\text{syntax}},\, t_{\text{dwell}},\, r_{\text{churn}}]^T \in \mathbb{R}^d$$
+                                </div>
+                                <ul style="font-size: 18px; line-height: 1.45; list-style-position: inside; color: var(--color-ink);">
+                                    <li>$\Delta\tau_k$: Inter-keystroke latency offset</li>
+                                    <li>$H_k$: Shannon entropy of input-interval cadence</li>
+                                    <li>$\sigma_{\text{scroll}}$: Viewport scroll and UI jitter</li>
+                                    <li>$e_{\text{syntax}}$: Immediate compilation/syntax validation errors</li>
+                                    <li>$t_{\text{dwell}}$: Static viewport dwell duration</li>
+                                    <li>$r_{\text{churn}}$: Rapid-retry execution frequency</li>
+                                </ul>
+                            </div>
+
+                            <div style="margin-top: 14px; padding-top: 14px; border-top: 1.5px dashed rgba(10,10,10,0.2);">
+                                <h4 style="font-family: var(--font-chrome); font-size: 22px; font-weight: 800; text-transform: uppercase; color: var(--color-sienna);">
+                                    LATENT 4D COGNITIVE STATE VECTOR:
+                                </h4>
+                                <div style="margin-top: 6px; font-size: 20px;">
+                                    $$s_t = [C_t,\, F_t,\, M_t,\, P_t]^T \in [0, 1]^3 \times [-1, 1]$$
+                                </div>
+                                <div style="font-size: 16px; color: rgba(10,10,10,0.7); margin-top: 4px;">
+                                    $C_t$: Cognitive Load • $F_t$: Flow Probability • $M_t$: Mastery Belief • $P_t$: Struggle Index
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Panel 2: Bayesian Filtering & Struggle -->
+                        <div class="card-color reveal" style="background: var(--color-paper); border: 2px solid rgba(10,10,10,0.15); justify-content: space-between;">
+                            <div>
+                                <span class="pill-status pill-teal" style="margin-bottom: 8px;">RECURSIVE BAYESIAN FILTER</span>
+                                <h3 class="headline-stencil" style="font-size: 30px; color: var(--color-ink);">
+                                    POMDP BELIEF UPDATE
+                                </h3>
+                                <div style="margin: 16px 0; background: #ffffff; padding: 14px 20px; border-radius: 12px; border: 1.5px solid rgba(10,10,10,0.1); font-size: 21px;">
+                                    $$b(s_t) \propto P(x_t \mid s_t) \int_{\mathcal{S}} \mathcal{T}(s_t \mid s_{t-1}, a_{t-1})\, b(s_{t-1})\, ds_{t-1}$$
+                                </div>
+                                <p style="font-size: 18px; line-height: 1.45; color: var(--color-ink);">
+                                    Maintains a continuous probability belief distribution $b(s_t)$ updated every 50 ms tick, where $P(x_t \mid s_t)$ is the observation model and $\mathcal{T}$ is the transition model.
+                                </p>
+                            </div>
+
+                            <div style="margin-top: 14px; padding-top: 14px; border-top: 1.5px dashed rgba(10,10,10,0.2);">
+                                <h4 style="font-family: var(--font-chrome); font-size: 22px; font-weight: 800; text-transform: uppercase; color: var(--color-orange);">
+                                    PRODUCTIVE STRUGGLE (COGNITIVE LOAD THEORY):
+                                </h4>
+                                <div style="margin: 8px 0; background: #ffffff; padding: 10px 16px; border-radius: 10px; border: 1.5px solid rgba(10,10,10,0.1); font-size: 20px;">
+                                    $$P_t = \tanh\left(\omega_1 M_t - \omega_2 (C_t - C^*)\right),\quad C^* \approx 0.65$$
+                                </div>
+                                <div style="display: flex; gap: 14px; font-size: 16px; line-height: 1.35; margin-top: 6px;">
+                                    <div style="flex: 1; background: rgba(45, 126, 115, 0.12); padding: 8px 12px; border-radius: 8px;">
+                                        <strong>$P_t &gt; 0$: Productive Difficulty</strong><br>Learner in proximal flow zone.
+                                    </div>
+                                    <div style="flex: 1; background: rgba(199, 59, 122, 0.12); padding: 8px 12px; border-radius: 8px;">
+                                        <strong>$P_t \ll 0$: Frustrating Impasse</strong><br>Triggers System Two remediation.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-chrome">
+                    <span>DP-ALS RESEARCH PAPER • IARE</span>
+                    <span>SLIDE 06 / 14</span>
+                </div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 07: DISCRETE ACTION SPACE
+                 =========================================== -->
+            <section class="slide theme-bone" data-label="07 Action Space">
+                <div class="topbar">
+                    <div class="topbar-left">
+                        <span style="color: var(--color-orange);">06.</span>
+                        <span>ACTION SPACE & POLICY OPTIMIZATION</span>
+                    </div>
+                    <div class="topbar-right">
+                        <span>5 DISCRETE INTERVENTIONS</span>
+                    </div>
+                </div>
+
+                <div class="slide-body" style="gap: 20px;">
+                    <div>
+                        <h2 class="headline-stencil reveal" style="font-size: 68px; color: var(--color-ink);">
+                            DISCRETE ACTIONS & REWARD OPTIMIZATION
+                        </h2>
+                        <p class="reveal" style="font-family: var(--font-chrome); font-size: 24px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-orange); margin-top: 4px;">
+                            BALANCING LEARNING GAINS, COMPUTE EXPENDITURE, AND IMMERSION PROTECTION
+                        </p>
+                    </div>
+
+                    <!-- 5 Action Nodes -->
+                    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px; flex: 1;">
+                        <!-- a0 -->
+                        <div class="card-color reveal" style="background: var(--color-sienna); color: var(--color-bone); justify-content: space-between;">
+                            <div class="num-stat" style="font-size: 72px; color: var(--color-bone);">a₀</div>
+                            <div>
+                                <h3 class="headline-stencil" style="font-size: 24px; color: var(--color-bone);">PASSIVE FLOW</h3>
+                                <p style="font-size: 17px; line-height: 1.35; color: var(--color-paper); margin-top: 8px;">
+                                    Zero UI interruption. Preserves immersion while learner is in active flow and productive struggle.
+                                </p>
+                            </div>
+                            <span class="pill-status pill-paper" style="color: var(--color-ink); align-self: flex-start;">PRESERVE FLOW</span>
+                        </div>
+
+                        <!-- a1 -->
+                        <div class="card-color reveal" style="background: var(--color-orange); color: var(--color-ink); justify-content: space-between;">
+                            <div class="num-stat" style="font-size: 72px; color: var(--color-ink);">a₁</div>
+                            <div>
+                                <h3 class="headline-stencil" style="font-size: 24px; color: var(--color-ink);">AMBIENT NUDGE</h3>
+                                <p style="font-size: 17px; line-height: 1.35; color: var(--color-ink); margin-top: 8px;">
+                                    Subtle inline typography or syntax tip. Corrects mechanical slips without modal interruption.
+                                </p>
+                            </div>
+                            <span class="pill-status pill-paper" style="align-self: flex-start;">MICRO-SCAFFOLD</span>
+                        </div>
+
+                        <!-- a2 -->
+                        <div class="card-color reveal" style="background: var(--color-mustard); color: var(--color-ink); justify-content: space-between;">
+                            <div class="num-stat" style="font-size: 72px; color: var(--color-ink);">a₂</div>
+                            <div>
+                                <h3 class="headline-stencil" style="font-size: 24px; color: var(--color-ink);">IRT ADAPTATION</h3>
+                                <p style="font-size: 17px; line-height: 1.35; color: var(--color-ink); margin-top: 8px;">
+                                    Item difficulty recalibration. Tunes next task $\beta$ to maintain targeted success rate $p^*$.
+                                </p>
+                            </div>
+                            <span class="pill-status pill-paper" style="align-self: flex-start;">DIFFICULTY PACING</span>
+                        </div>
+
+                        <!-- a3 -->
+                        <div class="card-color reveal" style="background: var(--color-magenta); color: var(--color-bone); justify-content: space-between;">
+                            <div class="num-stat" style="font-size: 72px; color: var(--color-bone);">a₃</div>
+                            <div>
+                                <h3 class="headline-stencil" style="font-size: 24px; color: var(--color-bone);">SYSTEM TWO</h3>
+                                <p style="font-size: 17px; line-height: 1.35; color: var(--color-paper); margin-top: 8px;">
+                                    Dispatches diagnostic payload $\Gamma$ to Socratic GenAI engine upon verified cognitive impasse.
+                                </p>
+                            </div>
+                            <span class="pill-status pill-paper" style="color: var(--color-ink); align-self: flex-start;">SOCRATIC RPC</span>
+                        </div>
+
+                        <!-- a4 -->
+                        <div class="card-color reveal" style="background: var(--color-teal); color: var(--color-bone); justify-content: space-between;">
+                            <div class="num-stat" style="font-size: 72px; color: var(--color-bone);">a₄</div>
+                            <div>
+                                <h3 class="headline-stencil" style="font-size: 24px; color: var(--color-bone);">COGNITIVE REST</h3>
+                                <p style="font-size: 17px; line-height: 1.35; color: var(--color-paper); margin-top: 8px;">
+                                    Inserts micro-pause or spaced-retrieval when motor cadence indicates cognitive fatigue ($\Delta\tau_k &gt; \tau_{\text{fatigue}}$).
+                                </p>
+                            </div>
+                            <span class="pill-status pill-paper" style="color: var(--color-ink); align-self: flex-start;">FATIGUE REST</span>
+                        </div>
+                    </div>
+
+                    <!-- Policy Optimization Formula Card -->
+                    <div class="card-color reveal" style="background: var(--color-paper); border: 2px solid rgba(10,10,10,0.15); padding: 18px 28px; display: flex; flex-direction: row; align-items: center; justify-content: space-between; gap: 32px;">
+                        <div>
+                            <span class="pill-status pill-mustard" style="margin-bottom: 6px;">POLICY OBJECTIVE FUNCTION</span>
+                            <div style="font-size: 26px;">
+                                $$J(\pi_{\text{System One}}) = \mathbb{E}\left[\sum_{t=0}^T \gamma^t \left(\Delta M_t + \alpha_1 F_t\right) - \lambda \mathbf{1}_{\{a_t=a_3\}} \Phi_{\text{cost}} - \alpha_2 D_t\right]$$
+                            </div>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: 4px; font-size: 17px; border-left: 2px solid rgba(10,10,10,0.15); padding-left: 24px;">
+                            <div>• $\Delta M_t$: Mastery increment &amp; learning return</div>
+                            <div>• $\alpha_1 F_t$: Reward for sustained cognitive flow</div>
+                            <div>• $\lambda \mathbf{1}_{\{a_t=a_3\}} \Phi_{\text{cost}}$: Penalty for costly System Two LLM calls</div>
+                            <div>• $\alpha_2 D_t$: Penalty for unnecessary flow disruption</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-chrome">
+                    <span>DP-ALS RESEARCH PAPER • IARE</span>
+                    <span>SLIDE 07 / 14</span>
+                </div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 08: CYBER-PHYSICAL ARCHITECTURE
+                 =========================================== -->
+            <section class="slide theme-dark" data-label="08 Architecture">
+                <div class="topbar">
+                    <div class="topbar-left">
+                        <span style="color: var(--color-orange);">07.</span>
+                        <span>CYBER-PHYSICAL ARCHITECTURE</span>
+                    </div>
+                    <div class="topbar-right">
+                        <span>THE 50 MS TELEMETRY LOOP</span>
+                    </div>
+                </div>
+
+                <div class="slide-body" style="gap: 20px;">
+                    <div>
+                        <h2 class="headline-stencil reveal" style="font-size: 68px; color: var(--color-bone);">
+                            CYBER-PHYSICAL ARCHITECTURE &amp; ALGORITHM 1
+                        </h2>
+                        <p class="reveal" style="font-family: var(--font-chrome); font-size: 24px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-orange); margin-top: 4px;">
+                            COORDINATING CLIENT WORKERS, EDGE REFLEX GATEWAYS, AND ASYNCHRONOUS SOCRATIC APIS
+                        </p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; flex: 1;">
+                        <!-- Stage 1 -->
+                        <div class="tablet reveal" style="background: rgba(45, 126, 115, 0.25); border: 2px solid var(--color-teal); color: var(--color-bone);">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <span class="num-stat" style="font-size: 76px; color: var(--color-teal);">50<span class="stat-suffix" style="color: var(--color-teal);">MS</span></span>
+                                <span class="pill-status pill-teal">STAGE 1</span>
+                            </div>
+                            <h3 class="headline-stencil" style="font-size: 28px; color: var(--color-bone); margin-top: 8px;">
+                                CLIENT TELEMETRY WORKER
+                            </h3>
+                            <ul style="margin-top: 14px; display: flex; flex-direction: column; gap: 10px; font-size: 18px; line-height: 1.4; list-style-position: inside;">
+                                <li><strong>Client JS Web Worker:</strong> Samples browser interaction signals every 50 ms.</li>
+                                <li><strong>GDPR / FERPA Compliant:</strong> Zero keystroke text is ever captured.</li>
+                                <li>Computes cadence entropy $H_k$, intervals $\Delta\tau_k$, and cursor accelerations.</li>
+                                <li><strong>Binary WebSocket Frame:</strong> 26 bytes padded to 28 bytes = <span style="color: var(--color-orange); font-weight: 700;">0.56 KB/s bandwidth</span>.</li>
+                            </ul>
+                            <div style="margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(226, 220, 201, 0.2);">
+                                <span style="font-family: var(--font-chrome); font-size: 18px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-teal);">
+                                    LOW-BANDWIDTH SECURE STREAM
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Stage 2 -->
+                        <div class="tablet reveal" style="background: rgba(238, 122, 46, 0.2); border: 2px solid var(--color-orange); color: var(--color-bone);">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <span class="num-stat" style="font-size: 76px; color: var(--color-orange);">&lt;40<span class="stat-suffix" style="color: var(--color-orange);">MS</span></span>
+                                <span class="pill-status pill-orange" style="background: var(--color-orange); color: var(--color-black);">STAGE 2</span>
+                            </div>
+                            <h3 class="headline-stencil" style="font-size: 28px; color: var(--color-bone); margin-top: 8px;">
+                                EDGE REFLEX GATEWAY
+                            </h3>
+                            <ul style="margin-top: 14px; display: flex; flex-direction: column; gap: 10px; font-size: 18px; line-height: 1.4; list-style-position: inside;">
+                                <li><strong>GLiNER2.5-Decide:</strong> Evaluates belief state $b(s_t)$ in $28.4 \pm 4.2\text{ ms}$.</li>
+                                <li>Computes expectations $(C_t, F_t, M_t, P_t) = \mathbb{E}_{b(s_t)}[s_t]$.</li>
+                                <li><strong>Priority Rule Hierarchy:</strong>
+                                    <div style="margin-top: 6px; font-size: 16px; background: rgba(0,0,0,0.4); padding: 8px 10px; border-radius: 6px;">
+                                        1. If $C_t \ge \tau_{\text{impasse}}$ or $P_t &lt; \tau_P \implies a_3$<br>
+                                        2. Else if fatigue $\implies a_4$<br>
+                                        3. Else if flow $\implies a_0$<br>
+                                        4. Else if syntax error $\implies a_1$
+                                    </div>
+                                </li>
+                            </ul>
+                            <div style="margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(226, 220, 201, 0.2);">
+                                <span style="font-family: var(--font-chrome); font-size: 18px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-orange);">
+                                    IMMEDIATE LOCAL ACTION DISPATCH
+                                </span>
+                            </div>
+                        </div>
+
+                        <!-- Stage 3 -->
+                        <div class="tablet reveal" style="background: rgba(199, 59, 122, 0.25); border: 2px solid var(--color-magenta); color: var(--color-bone);">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <span class="num-stat" style="font-size: 76px; color: var(--color-magenta);">ASYNC</span>
+                                <span class="pill-status pill-magenta">STAGE 3</span>
+                            </div>
+                            <h3 class="headline-stencil" style="font-size: 28px; color: var(--color-bone); margin-top: 8px;">
+                                ASYNC SOCRATIC RPC
+                            </h3>
+                            <ul style="margin-top: 14px; display: flex; flex-direction: column; gap: 10px; font-size: 18px; line-height: 1.4; list-style-position: inside;">
+                                <li><strong>Fires Only on Impasse:</strong> Triggered when load $C_t \ge 0.75$.</li>
+                                <li><strong>Cooldown Lock $T_{\text{cool}}$:</strong> `pending` flag prevents queue flooding while reply is in flight.</li>
+                                <li>Assembles context: $\Gamma = \langle b(s_t),\, \text{ErrorTrace},\, \text{SkillGraph}\rangle$.</li>
+                                <li>Streams personalized Socratic questions to non-blocking client sidebar.</li>
+                            </ul>
+                            <div style="margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(226, 220, 201, 0.2);">
+                                <span style="font-family: var(--font-chrome); font-size: 18px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-magenta);">
+                                    SELECTIVE GENAI REASONING
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-chrome">
+                    <span>DP-ALS RESEARCH PAPER • IARE</span>
+                    <span>SLIDE 08 / 14</span>
+                </div>
+            </section>
+
+
         </main>
     </div>
 
