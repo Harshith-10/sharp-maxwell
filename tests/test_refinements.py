@@ -6,11 +6,21 @@ def test_user_refinements():
         html = f.read()
     soup = BeautifulSoup(html, "html.parser")
     slides = soup.find_all("section", class_="slide")
-    assert len(slides) == 15
+    assert len(slides) == 16
 
-    # 1. Slide 1 and Slide 15: "DP" icon removed
-    s1_html = str(slides[0])
-    s15_html = str(slides[14])
+    # Slide 00: Empty black intro slide
+    s0 = slides[0]
+    assert s0.has_attr("data-label") and "00" in s0["data-label"]
+    assert "theme-dark" in s0.get("class", [])
+
+    # Fullscreen button check
+    fs_btn = soup.find(id="fullscreenBtn")
+    assert fs_btn is not None, "Fullscreen button #fullscreenBtn must be present"
+    assert "fullscreen-btn" in fs_btn.get("class", [])
+
+    # 1. Slide 1 (index 1) and Slide 15 (index 15): "DP" icon removed
+    s1_html = str(slides[1])
+    s15_html = str(slides[15])
     assert ">DP<" not in s1_html, "Slide 1 should not contain 'DP' square icon"
     assert ">DP<" not in s15_html, "Slide 15 should not contain 'DP' square icon"
 
@@ -21,49 +31,49 @@ def test_user_refinements():
     assert "(Supervisor)" in s15_html
 
     # Footer checks:
-    # First and last slide have DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING in bottom left
-    s1_footer = slides[0].find("div", class_="footer-chrome").text
-    s15_footer = slides[14].find("div", class_="footer-chrome").text
+    # First content slide and last slide have DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING in bottom left
+    s1_footer = slides[1].find("div", class_="footer-chrome").text
+    s15_footer = slides[15].find("div", class_="footer-chrome").text
     assert "DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING" in s1_footer
     assert "DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING" in s15_footer
 
-    # No "• IARE" in any slide footer
-    for i, s in enumerate(slides):
+    # No "• IARE" in any slide footer (excluding empty intro slide which has no footer)
+    for i, s in enumerate(slides[1:]):
         footer = s.find("div", class_="footer-chrome")
         assert footer is not None, f"Slide {i+1} missing footer-chrome"
         assert "• IARE" not in footer.text, f"Slide {i+1} still contains '• IARE' in footer: {footer.text}"
 
-    # Slide 1 top left has logo image
-    s1_topbar_left = slides[0].find("div", class_="topbar-left")
+    # Slide 1 (index 1) top left has logo image
+    s1_topbar_left = slides[1].find("div", class_="topbar-left")
     s1_logo = s1_topbar_left.find("img")
     assert s1_logo is not None, "Slide 1 topbar-left must contain the logo image"
     assert s1_logo["src"] == "logo.png"
     assert "IARE CSE RESEARCH SEMINAR" not in s1_topbar_left.text
 
-    # 2. Slide 3: Bullet points wrapped in rounded shapes
-    s3 = slides[2]
+    # 2. Slide 3: Bullet points wrapped in rounded shapes (index 3)
+    s3 = slides[3]
     s3_subcards = s3.find_all("div", style=lambda s: s and "border-radius: 16px" in s and "background: rgba(0, 0, 0, 0.22)" in s)
     assert len(s3_subcards) >= 6, f"Expected 6 rounded sub-cards in Slide 3, got {len(s3_subcards)}"
 
-    # 3. Slide 5: Formula font size increased
-    s5_html = str(slides[4])
+    # 3. Slide 5: Formula font size increased (index 5)
+    s5_html = str(slides[5])
     assert "font-size: 28px" in s5_html and "\\pi_{\\text{System One}}" in s5_html
 
-    # 4. Slide 9: Right cards have larger font size (25px)
-    s9_html = str(slides[8])
+    # 4. Slide 9: Right cards have larger font size (25px) (index 9)
+    s9_html = str(slides[9])
     assert "font-size: 25px" in s9_html
     assert "font-size: 28px" in s9_html
 
-    # 5. Slide 10: Rich sub-cards and prompt directives
-    s10 = slides[9]
+    # 5. Slide 10: Rich sub-cards and prompt directives (index 10)
+    s10 = slides[10]
     s10_text = s10.text
     assert "GRAPH-BASED COMPETENCY MAPPING" in s10_text
     assert "SPACED-DECAY RETENTION ENGINE" in s10_text
     assert "IMMUTABLE LIFELONG MICRO-CREDENTIALS" in s10_text
     assert "OUTPUT QUESTION" in s10_text
 
-    # 6. Slide 14: All 3 tablets have structured sub-cards
-    s14 = slides[13]
+    # 6. Slide 14: All 3 tablets have structured sub-cards (index 14)
+    s14 = slides[14]
     s14_text = s14.text
     assert "SUB-40MS REFLEX ENGINE" in s14_text
     assert "IMPASSE-GATED SOCRATIC LLM" in s14_text

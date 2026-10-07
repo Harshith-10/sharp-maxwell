@@ -9,8 +9,8 @@ def test_full_presentation_integrity():
 
     soup = BeautifulSoup(html, "html.parser")
     slides = soup.find_all("section", class_="slide")
-    assert len(slides) == 15, f"Expected 15 slides, found {len(slides)}"
-    assert "THANK YOU" in slides[14].text.upper()
+    assert len(slides) == 16, f"Expected 16 slides, found {len(slides)}"
+    assert "THANK YOU" in slides[15].text.upper()
 
     # Check that both images are present and reference valid local files
     images = soup.find_all("img")
@@ -41,11 +41,12 @@ def test_full_presentation_integrity():
     assert "Stardos+Stencil" in html
     assert "Barlow+Condensed" in html
 
-    # Verify each slide has rich content and appropriate labels
+    # Verify each slide has rich content and appropriate labels (slide 0 is intro black slide)
     for i, slide in enumerate(slides):
         assert slide.has_attr("data-label"), f"Slide {i+1} missing data-label"
         text = slide.text.strip()
-        assert len(text) > 40, f"Slide {i+1} has insufficient content ({len(text)} chars)"
+        if i > 0:
+            assert len(text) > 40, f"Slide {i+1} has insufficient content ({len(text)} chars)"
 
     # Verify mathematical formulas are present
     assert "\\Delta\\tau_k" in html or "\\Delta \\tau" in html
