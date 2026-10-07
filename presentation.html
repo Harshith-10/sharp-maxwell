@@ -1099,6 +1099,183 @@
                 </div>
             </section>
 
+            <!-- ===========================================
+                 SLIDE 09: REAL-TIME TELEMETRY IN ACTION
+                 =========================================== -->
+            <section class="slide theme-bone" data-label="09 Telemetry Trace">
+                <div class="topbar">
+                    <div class="topbar-left">
+                        <span style="color: var(--color-orange);">08.</span>
+                        <span>SIMULATED SESSION TRACE</span>
+                    </div>
+                    <div class="topbar-right">
+                        <span>COGNITIVE LOAD &amp; FLOW TELEMETRY</span>
+                    </div>
+                </div>
+
+                <div class="slide-body" style="gap: 16px;">
+                    <div>
+                        <h2 class="headline-stencil reveal" style="font-size: 64px; color: var(--color-ink);">
+                            REAL-TIME TELEMETRY IN ACTION (FIG. 2)
+                        </h2>
+                        <p class="reveal" style="font-family: var(--font-chrome); font-size: 22px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-teal); margin-top: 2px;">
+                            CONTINUOUS POMDP TRACKING: SYSTEM ONE REFLEX MICRO-NUDGES &amp; SYSTEM TWO IMPASSE DISPATCH
+                        </p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1.35fr 1fr; gap: 28px; flex: 1; align-items: stretch;">
+                        <!-- Left: Figure 2 Display Frame -->
+                        <div class="card-color reveal" style="background: var(--color-paper); border: 2px solid rgba(10,10,10,0.2); padding: 20px; display: flex; flex-direction: column; justify-content: center;">
+                            <div style="background: #ffffff; padding: 12px; border-radius: 16px; border: 1.5px solid rgba(10,10,10,0.15); box-shadow: 0 4px 16px rgba(10,10,10,0.06); display: flex; align-items: center; justify-content: center;">
+                                <img src="fig_telemetry.png" alt="Illustrative Simulated Session Telemetry Trace" style="width: 100%; height: auto; max-height: 480px; object-fit: contain; border-radius: 10px;">
+                            </div>
+                            <div style="font-size: 16px; line-height: 1.4; color: rgba(10,10,10,0.75); margin-top: 14px; font-style: italic;">
+                                <strong>Fig. 2: Illustrative simulated session.</strong> System One tracks cognitive load $C_t$ and flow $F_t$ and deploys micro-nudges while load is below $\tau_{\text{impasse}} = 0.75$; System Two is dispatched once, when the threshold is first breached.
+                            </div>
+                        </div>
+
+                        <!-- Right: Two Annotation Tablets -->
+                        <div style="display: flex; flex-direction: column; gap: 18px;">
+                            <!-- Tablet 1: Micro-Nudge Phase -->
+                            <div class="tablet reveal" style="background: var(--color-teal); color: var(--color-bone); flex: 1; padding: 24px 26px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <h3 class="headline-stencil" style="font-size: 24px; color: var(--color-bone);">
+                                        MICRO-NUDGE REPAIR PHASE
+                                    </h3>
+                                    <span class="pill-status pill-paper" style="color: var(--color-ink);">LOAD &lt; 0.75</span>
+                                </div>
+                                <div style="margin-top: 10px; font-size: 18px; line-height: 1.4; color: var(--color-paper);">
+                                    <p>While cognitive load $C_t &lt; \tau_{\text{impasse}}$, System One issues micro-actions $a_1$ (ambient nudge) and $a_2$ (IRT difficulty calibration).</p>
+                                    <p style="margin-top: 6px;">Keeps student in <strong>productive difficulty</strong> ($P_t &gt; 0$) and preserves flow immersion ($F_t \approx 0.8$) without breakages.</p>
+                                </div>
+                                <div style="margin-top: auto; padding-top: 8px;">
+                                    <span class="pill-status pill-bone" style="background: var(--color-bone); color: var(--color-teal); font-size: 16px;">
+                                        REFLEX LATENCY: 28.4 MS
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Tablet 2: Socratic Dispatch -->
+                            <div class="tablet reveal" style="background: var(--color-orange); color: var(--color-ink); flex: 1; padding: 24px 26px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center;">
+                                    <h3 class="headline-stencil" style="font-size: 24px; color: var(--color-ink);">
+                                        CRITICAL IMPASSE DISPATCH
+                                    </h3>
+                                    <span class="pill-status pill-paper" style="color: var(--color-ink);">LOAD ≥ 0.75</span>
+                                </div>
+                                <div style="margin-top: 10px; font-size: 18px; line-height: 1.4; color: var(--color-ink);">
+                                    <p>When cognitive load spikes to $C_t \ge 0.75$ and struggle index collapses to $P_t &lt; -0.4$, System One triggers action $a_3$.</p>
+                                    <p style="margin-top: 6px;">Asynchronously packages diagnostic packet $\Gamma$ to System Two Socratic LLM. Cooldown lock $T_{\text{cool}}$ prevents redundant API firing.</p>
+                                </div>
+                                <div style="margin-top: auto; padding-top: 8px;">
+                                    <span class="pill-status pill-paper" style="color: var(--color-orange); background: var(--color-black); font-size: 16px;">
+                                        DISPATCH a₃ (SOCRATIC LLM)
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-chrome">
+                    <span>DP-ALS RESEARCH PAPER • IARE</span>
+                    <span>SLIDE 09 / 14</span>
+                </div>
+            </section>
+
+            <!-- ===========================================
+                 SLIDE 10: SYSTEM TWO SOCRATIC REMEDIATION
+                 =========================================== -->
+            <section class="slide theme-bone" data-label="10 Socratic & Passport">
+                <div class="topbar">
+                    <div class="topbar-left">
+                        <span style="color: var(--color-orange);">09.</span>
+                        <span>SOCRATIC REMEDIATION &amp; CREDENTIALS</span>
+                    </div>
+                    <div class="topbar-right">
+                        <span>PROMPT DIRECTIVES &amp; SKILL PASSPORT</span>
+                    </div>
+                </div>
+
+                <div class="slide-body" style="gap: 20px;">
+                    <div>
+                        <h2 class="headline-stencil reveal" style="font-size: 68px; color: var(--color-ink);">
+                            SOCRATIC CONTEXT INJECTION &amp; SKILL PASSPORT
+                        </h2>
+                        <p class="reveal" style="font-family: var(--font-chrome); font-size: 24px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-magenta); margin-top: 4px;">
+                            GROUNDED ANALOGIES WITHOUT CODE SPOILERS • IMMUTABLE LIFELONG KNOWLEDGE GRAPHS
+                        </p>
+                    </div>
+
+                    <div style="display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; flex: 1;">
+                        <!-- Left: Appendix B Prompt Template -->
+                        <div class="tablet reveal" style="background: var(--color-magenta); color: var(--color-bone);">
+                            <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                <h3 class="headline-stencil" style="font-size: 26px; color: var(--color-bone);">
+                                    APPENDIX B: SOCRATIC CONTEXT TEMPLATE
+                                </h3>
+                                <span class="pill-status pill-paper" style="color: var(--color-ink);">PROMPT COMPILER</span>
+                            </div>
+
+                            <!-- Styled Terminal Box -->
+                            <div style="margin-top: 14px; background: #0A0A0A; border-radius: 12px; padding: 18px 20px; font-family: monospace; font-size: 16px; line-height: 1.45; color: #E2DCC9; border: 1.5px solid rgba(255,255,255,0.15);">
+                                <div style="color: var(--color-mustard); font-weight: bold; margin-bottom: 6px;">[SYSTEM CONTEXT: DUAL-PROCESS PEDAGOGICAL AGENT]</div>
+                                <div><span style="color: var(--color-orange);">Learner Profile:</span> Mid-Career Professional (Age 42)</div>
+                                <div><span style="color: var(--color-orange);">Target Competency:</span> Graph Algorithms (Dijkstra, WK3/PO1)</div>
+                                <div><span style="color: var(--color-orange);">State:</span> C_t = 0.82 (High), Flow = 0.12, Struggle = -0.65</div>
+                                <div><span style="color: var(--color-orange);">Diagnostic:</span> 3 failed attempts on relaxation step in 45 s.</div>
+                                <div style="margin-top: 8px; color: #FF6B6B; font-weight: bold; background: rgba(255,107,107,0.12); padding: 6px 10px; border-radius: 6px;">
+                                    DIRECTIVE: Do NOT provide solution code. Formulate a 2-sentence Socratic question grounding node relaxation in logistics routing. Preserve learner agency.
+                                </div>
+                            </div>
+
+                            <p style="font-size: 18px; line-height: 1.4; color: var(--color-paper); margin-top: 14px;">
+                                <strong>Anti-Over-Assistance Guardrails:</strong> Generative tutors without bounds damage future test performance. DP-ALS strictly forbids code generation, forcing Socratic analogical reasoning.
+                            </p>
+                        </div>
+
+                        <!-- Right: Lifelong Skill Passport -->
+                        <div class="tablet reveal" style="background: var(--color-blue); color: var(--color-bone); justify-content: space-between;">
+                            <div>
+                                <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                                    <h3 class="headline-stencil" style="font-size: 26px; color: var(--color-bone);">
+                                        LIFELONG KNOWLEDGE GRAPH
+                                    </h3>
+                                    <span class="pill-status pill-paper" style="color: var(--color-ink);">SKILL PASSPORT</span>
+                                </div>
+
+                                <ul style="margin-top: 18px; display: flex; flex-direction: column; gap: 14px; font-size: 19px; line-height: 1.42; list-style-position: inside;">
+                                    <li>
+                                        <strong>Graph-Based Competencies:</strong> Continuously tracks evolving knowledge nodes mapped to Washington Accord (WK2–WK9).
+                                    </li>
+                                    <li>
+                                        <strong>Spaced-Decay Retention Functions:</strong> Calculates competency decay over time, proactively suggesting targeted micro-refreshers before obsolescence.
+                                    </li>
+                                    <li>
+                                        <strong>Immutable Micro-Credentials:</strong> Replaces static 4-year diplomas with dynamic, verifiable proof of modern competency.
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <div style="background: rgba(0,0,0,0.2); padding: 14px 20px; border-radius: 14px; border: 1.5px solid rgba(226, 220, 201, 0.2);">
+                                <div style="font-family: var(--font-chrome); font-size: 20px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-orange);">
+                                    PARADIGM SHIFT (PO11)
+                                </div>
+                                <div style="font-size: 17px; line-height: 1.35; color: var(--color-bone); margin-top: 4px;">
+                                    Continuous learning becomes an auditable, lifelong asset rather than a forgotten graduation certificate.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="footer-chrome">
+                    <span>DP-ALS RESEARCH PAPER • IARE</span>
+                    <span>SLIDE 10 / 14</span>
+                </div>
+            </section>
+
+
 
         </main>
     </div>
