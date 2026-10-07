@@ -14,9 +14,32 @@ def test_user_refinements():
     assert ">DP<" not in s1_html, "Slide 1 should not contain 'DP' square icon"
     assert ">DP<" not in s15_html, "Slide 15 should not contain 'DP' square icon"
 
+    # Supervisor badge & Ms. N. Ramya in first and last slides
+    assert "MS. N. RAMYA" in s1_html.upper()
+    assert "(Supervisor)" in s1_html
+    assert "MS. N. RAMYA" in s15_html.upper()
+    assert "(Supervisor)" in s15_html
+
+    # Footer checks:
+    # First and last slide have DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING in bottom left
+    s1_footer = slides[0].find("div", class_="footer-chrome").text
+    s15_footer = slides[14].find("div", class_="footer-chrome").text
+    assert "DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING" in s1_footer
+    assert "DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING" in s15_footer
+
+    # No "• IARE" in any slide footer
+    for i, s in enumerate(slides):
+        footer = s.find("div", class_="footer-chrome")
+        assert footer is not None, f"Slide {i+1} missing footer-chrome"
+        assert "• IARE" not in footer.text, f"Slide {i+1} still contains '• IARE' in footer: {footer.text}"
+
+    # Slide 1 top left has INSTITUTE OF AERONAUTICAL ENGINEERING
+    s1_topbar_left = slides[0].find("div", class_="topbar-left").text
+    assert "INSTITUTE OF AERONAUTICAL ENGINEERING" in s1_topbar_left
+    assert "IARE CSE RESEARCH SEMINAR" not in s1_topbar_left
+
     # 2. Slide 3: Bullet points wrapped in rounded shapes
     s3 = slides[2]
-    # Check for rounded border-radius sub-cards
     s3_subcards = s3.find_all("div", style=lambda s: s and "border-radius: 16px" in s and "background: rgba(0, 0, 0, 0.22)" in s)
     assert len(s3_subcards) >= 6, f"Expected 6 rounded sub-cards in Slide 3, got {len(s3_subcards)}"
 
